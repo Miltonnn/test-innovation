@@ -6,6 +6,7 @@ import { useLogin } from "@/hooks/useLogin";
 import { useAuthStore } from "@/store/auth.store";
 import { LoginRequest } from "@/types/auth";
 
+import { Input } from "@/components/ui/input";
 import { Lock, User } from "lucide-react";
 
 export default function LoginPage() {
@@ -51,16 +52,19 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="hero-bg flex flex-col items-center justify-center min-h-screen gap-10 px-5">
+    <section className="hero-bg flex flex-col items-center justify-center min-h-screen gap-10 px-5">
       <h1 className="text-4xl font-bold text-primary text-center">
         Bem-vindo a innovation Brindes
       </h1>
       <div className="w-full max-w-md bg-primary px-8 py-20 rounded-2xl shadow-md">
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="flex items-center bg-white rounded-full px-4 py-2 gap-2">
-            <User size={18} className="text-gray-400" />
+          <div className="relative">
+            <User
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+              size={18}
+            />
 
-            <input
+            <Input
               id="email"
               name="email"
               type="text"
@@ -68,13 +72,16 @@ export default function LoginPage() {
               required
               value={formData.email}
               onChange={handleChange}
-              className="w-full bg-transparent focus:outline-none"
+              className="pl-10 rounded-full bg-white"
             />
           </div>
 
-          <div className="flex items-center bg-white rounded-full px-4 py-2 gap-2">
-            <Lock size={18} className="text-gray-400" />
-            <input
+          <div className="relative">
+            <Lock
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+              size={18}
+            />
+            <Input
               id="senha"
               name="senha"
               type="password"
@@ -82,7 +89,7 @@ export default function LoginPage() {
               required
               value={formData.senha}
               onChange={handleChange}
-              className="w-full bg-transparent focus:outline-none"
+              className="pl-10 rounded-full bg-white"
             />
           </div>
 
@@ -98,9 +105,7 @@ export default function LoginPage() {
           </div>
 
           {errorMessage && (
-            <div className="text-white text-sm text-center">
-              {errorMessage}
-            </div>
+            <div className="text-white text-sm text-center">{errorMessage}</div>
           )}
 
           <button
@@ -112,6 +117,6 @@ export default function LoginPage() {
           </button>
         </form>
       </div>
-    </div>
+    </section>
   );
 }
