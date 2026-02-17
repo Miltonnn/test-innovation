@@ -8,7 +8,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import Image from "next/image";
-import { Product } from "@/types/product";
+import { Product } from "@/types/products";
 import { ProductPrice } from "../product/ProductPrice";
 
 interface ProductModalProps {

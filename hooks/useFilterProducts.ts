@@ -3,7 +3,10 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getFilteredProducts } from "@/services/product.service";
-import { Product, ProductFilterRequest } from "@/types/product";
+import {
+  ProductsResponse,
+  ProductFilterRequest,
+} from "@/types/products";
 
 function useDebounce<T>(value: T, delay = 400) {
   const [debounced, setDebounced] = useState(value);

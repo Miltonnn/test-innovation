@@ -2,7 +2,7 @@ import { api } from "./api";
 import {
   ProductsResponse,
   ProductFilterRequest,
-} from "@/types/product";
+} from "@/types/products";
 
 export const getProducts = async (
   token: string

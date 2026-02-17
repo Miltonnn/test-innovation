@@ -5,7 +5,7 @@ import { useFavorites } from "./FavoritesContext";
 import { useState } from "react";
 import { SkeletonCard } from "./SkeletonCard";
 import { useFilterProducts } from "@/hooks/useFilterProducts";
-import { ProductFilterRequest } from "@/types/product";
+import { ProductFilterRequest } from "@/types/products";
 
 interface Props {
   token: string;
