@@ -1,5 +1,6 @@
 import { ReactQueryProvider } from "@/providers/react-query.provider";
 import { FavoritesProvider } from "@/components/product/FavoritesContext";
+import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -14,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body>
+      <body suppressHydrationWarning={true}> 
         <ReactQueryProvider>
           <FavoritesProvider>
           {children}

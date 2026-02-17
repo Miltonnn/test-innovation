@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Product } from "@/types/products";
+import { Product } from "@/types/product";
 import { Button } from "@/components/ui/button";
 import { ProductModal } from "@/components/modal/ProductModal";
 import { Heart } from "lucide-react";

@@ -5,7 +5,7 @@ import { useFavorites } from "./FavoritesContext";
 import { useState } from "react";
 import { SkeletonCard } from "./SkeletonCard";
 import { useFilterProducts } from "@/hooks/useFilterProducts";
-import { ProductFilterRequest } from "@/types/products";
+import { ProductFilterRequest } from "@/types/product";
 
 interface Props {
   token: string;
@@ -14,15 +14,13 @@ interface Props {
 export function ProductClient({ token }: Props) {
   const { favorites } = useFavorites();
   const [onlyFavorites, setOnlyFavorites] = useState(false);
-  const [filters, setFilters] = useState<ProductFilterRequest>({ nome_produto: "", codigo_produto: "" });
+  const [filters, setFilters] = useState<ProductFilterRequest>({
+    nome_produto: "",
+    codigo_produto: "",
+  });
 
-  const {
-    products,
-    isLoading,
-    isError,
-    loadMore,
-    sortProducts,
-  } = useFilterProducts(token, filters);
+  const { products, isLoading, isError, loadMore, sortProducts } =
+    useFilterProducts(token, filters);
 
   const filteredProducts = onlyFavorites
     ? products.filter((p) => favorites.includes(Number(p.codigo)))
@@ -31,7 +29,6 @@ export function ProductClient({ token }: Props) {
   return (
     <section className="min-h-screen py-10 px-5 lg:px-20">
       <div className="container m-auto mb-10 flex flex-col md:flex-row gap-4 items-start md:items-center justify-center">
-        
         <input
           type="text"
           placeholder="Buscar por nome"
@@ -53,7 +50,10 @@ export function ProductClient({ token }: Props) {
         {/* Ordenação */}
         <select
           onChange={(e) => {
-            const [sortBy, order] = e.target.value.split("_") as ["nome" | "preco", "asc" | "desc"];
+            const [sortBy, order] = e.target.value.split("_") as [
+              "nome" | "preco",
+              "asc" | "desc",
+            ];
             sortProducts(sortBy, order);
           }}
           className="border p-2 rounded"
@@ -75,7 +75,9 @@ export function ProductClient({ token }: Props) {
       ) : (
         <>
           {filteredProducts.length === 0 ? (
-            <p className="text-center text-gray-500">Nenhum produto encontrado</p>
+            <p className="text-center text-gray-500">
+              Nenhum produto encontrado
+            </p>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-6">
               {filteredProducts.map((produto) => (
@@ -100,7 +102,9 @@ export function ProductClient({ token }: Props) {
       )}
 
       {isError && (
-        <p className="text-red-500 text-center mt-4">Erro ao carregar produtos</p>
+        <p className="text-red-500 text-center mt-4">
+          Erro ao carregar produtos
+        </p>
       )}
     </section>
   );
